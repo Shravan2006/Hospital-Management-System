@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:app/screens/services/cart_service.dart';
+import 'package:hospital_app/screens/services/cart_service.dart';
 import 'test_categories_screen.dart';
 import 'guide.dart';
 import 'my_appointments_screen.dart';
@@ -91,11 +91,11 @@ class _PatientDashboardState extends State<PatientDashboard> {
         foregroundColor: Colors.black87,
         elevation: 1,
         title: Text('Patient Dashboard',
-        style: TextStyle(
-          color: Colors.black87,
-          fontWeight: FontWeight.w600,
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.w600,
+          ),
         ),
-      ),
         actions: [
           IconButton(
             icon: Icon(Icons.notifications_outlined),

@@ -62,7 +62,9 @@ class _AppointmentConfirmationScreenState
     _controller.forward();
 
     // Save appointment items to database
-    _saveAppointmentItems();
+    _saveAppointmentItems().then((_) {
+      _processTestQueue();
+    });
   }
 
   Future<void> _saveAppointmentItems() async {
@@ -96,6 +98,31 @@ class _AppointmentConfirmationScreenState
       );
     }
   }
+
+  Future<void> _processTestQueue() async {
+    try {
+      print('🔄 Processing test queue for appointment: ${widget.appointmentId}');
+
+      await supabase.rpc(
+        'complete_current_test_and_move_next',
+        params: {
+          'p_appointment_id': widget.appointmentId,
+        },
+      );
+
+      print('✅ Test queue processed successfully');
+    } catch (e) {
+      print('❌ Error processing test queue: $e');
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Room assignment pending. Please contact reception.'),
+          backgroundColor: Colors.orange,
+        ),
+      );
+    }
+  }
+
 
   @override
   void dispose() {
@@ -631,4 +658,4 @@ ${widget.isPaid ? '✅ *Status:* Paid' : '⚠️ *Status:* Pay at Counter'}
       ],
     );
   }
-} 
+}
