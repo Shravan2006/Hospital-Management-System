@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:app/screens/services/cart_service.dart';
+import 'package:hospital_app/screens/services/cart_service.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'payment_method_selection_screen.dart';
 import 'dart:math';
@@ -208,6 +208,8 @@ class _BookAppointmentScreenState extends State<BookAppointmentScreen> {
               amount: totalAmount,
               items: items,
               appointmentId: mockId,
+              testIds: widget.testIds,
+              patientId: widget.patientId,
             ),
           ),
         );

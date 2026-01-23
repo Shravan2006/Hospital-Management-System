@@ -17,6 +17,8 @@ class PaymentMethodSelectionScreen extends StatefulWidget {
     required this.appointmentTime,
     required this.amount,
     required this.items,
+    required List<String> testIds,
+    required String patientId,
   }) : super(key: key);
 
   @override
